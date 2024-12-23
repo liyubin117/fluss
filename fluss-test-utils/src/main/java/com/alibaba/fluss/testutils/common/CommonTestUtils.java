@@ -144,7 +144,10 @@ public class CommonTestUtils {
                 if (System.currentTimeMillis() - startTime >= maxWaitMs) {
                     throw t;
                 }
-                LOG.info("Attempt failed, sleeping for {} ms, and then retrying.", waitMs);
+                LOG.info(
+                        "Attempt failed, sleeping for {} ms, and then retrying. caused by: {}\n",
+                        waitMs,
+                        t.getMessage());
                 try {
                     //noinspection BusyWait
                     Thread.sleep(waitMs);
